@@ -1,2 +1,35 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+def ary_ipt(sz):
+    ary=[0]*sz
+    for lc in range(sz):
+        ary[lc]=int(input('Element '+str(lc)+': '))
+    return(ary)
+
+def sort_ary(ary,ct,swap):
+    print(ary)
+    for lc in range(ct):
+        if ary[lc]>ary[lc+1]:
+            tmp=ary[lc]
+            ary[lc]=ary[lc+1]
+            ary[lc+1]=tmp
+            swap[0]=swap[0]+1
+        print(ary)
+
+ipt=int(input('no. of elements: '))
+while ipt>20:
+    print('number too large')
+    ipt=int(input('no. of elements: '))
+ary=ary_ipt(ipt)
+print(ary)
+ps_ct=1
+sw_ct=len(ary)-1
+swap=[0]
+while ary != sorted(ary):
+    print('pass no.',ps_ct)
+    sort_ary(ary,sw_ct,swap)
+    ps_ct=ps_ct+1
+    sw_ct=sw_ct-1
+print('pass no.',ps_ct)
+print(ary)
+print('Sort Complete')
+print('comp:',round(len(ary)*(len(ary)+1)/2))
+print('swaps:',str(swap[0]))
